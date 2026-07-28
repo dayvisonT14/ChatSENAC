@@ -16,7 +16,7 @@ class Tipografia {
       letterSpacing: 12 * -0.01,
     );
   static TextStyle link = TextStyle(
-    fontSize: 32,
+    fontSize: 12,
     fontWeight: FontWeight.w600,
     fontFamily: "Inter",
     height: 1.4,
