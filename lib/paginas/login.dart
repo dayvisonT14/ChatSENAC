@@ -54,6 +54,7 @@ class Login extends StatelessWidget {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
+              suffixIcon: Icon(Icons.visibility_off),
               contentPadding: const EdgeInsets.symmetric(
                 horizontal: 16,
                 vertical: 12,
