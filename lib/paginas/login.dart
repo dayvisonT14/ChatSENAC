@@ -1,160 +1,122 @@
 import 'package:flutter/material.dart';
 import 'package:primeiro_app/utilitarios/tipografia.dart';
+
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      // Tópico 1: Rolagem e margens nas bordas
-      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // Logo e Nome do App
-          Row(
-            children: [
-              FlutterLogo(size: 18),
-              const SizedBox(width: 8), // Tópico 3: Espaço horizontal
-              Text("ChatSENAC"),
-            ],
-          ),
-          const SizedBox(height: 32), // Tópico 3
-          // Títulos
-          Text("Entre na sua conta", style: Tipografia.h1),
-          const SizedBox(height: 12), // Tópico 3
-          Text(
-            "Coloque o seu email e senha para logar",
-            style: Tipografia.Subtitulo,
-          ),
-          const SizedBox(height: 32), // Tópico 3
-          // Campo de Email
-          Text("Email"),
-          const SizedBox(height: 4), // Tópico 3
-          TextField(
-            // Tópico 4: Estilização do input
-            decoration: InputDecoration(
-              hintText: "exemplo@gmail.com",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 12,
-              ),
-            ),
-          ),
-          const SizedBox(height: 16), // Tópico 3
-          // Campo de Senha
-          Text("Senha"),
-          const SizedBox(height: 4), // Tópico 3
-          TextField(
-            // Tópico 5: Oculta a senha
-            obscureText: true,
-            decoration: InputDecoration(
-              hintText: "",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              suffixIcon: Icon(Icons.visibility_off),
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 12,
-              ),
-            ),
-          ),
-          const SizedBox(height: 12), // Tópico 3
-          // Esqueceu a senha
-          InkWell(
-            child: Text(
-              "Esqueceu a senha?",
-              style: Tipografia.link,
-              textAlign: TextAlign.right,
-            ),
-          ),
-          const SizedBox(height: 24), // Tópico 3
-          // Botão Entrar Principal
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue,
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 16),
-              elevation: 0,
-            ),
-            child: const Text(
-              "Entrar",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-          ),
-          const SizedBox(height: 16), // Tópico 3
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(children: [FlutterLogo(size: 18), Text("ChatSENAC")]),
+            SizedBox(height: 32),
 
-          const Text(
-            "ou",
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.grey),
-          ),
-          const SizedBox(height: 16), // Tópico 3
-          // Tópico 6: Botão Google com OutlinedButton e altura 48
-          OutlinedButton(
-            onPressed: () {},
-            style: OutlinedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 16),
-              side: const BorderSide(color: Colors.grey),
+            // Titulos
+            Text("Entre na sua Conta", style: Tipografia.h1),
+            SizedBox(height: 12),
+            Text(
+              "Coloque o seu email e senha para logar",
+              style: Tipografia.subtitulo,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              spacing: 10,
-              children: [
-                Image.asset("assets/imagem/google-icon.png", height: 20),
-                Text(
-                  "Continuar com o Google",
-                  style: TextStyle(color: Colors.black87),
+            SizedBox(height: 32),
+
+            // Campos
+            Text("Email", style: Tipografia.subtitulo),
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
+              ),
+            ),
+            SizedBox(height: 16),
+            Text("Senha", style: Tipografia.subtitulo),
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                suffixIcon: Icon(Icons.visibility_off),
+              ),
+              obscureText: true,
+            ),
+            SizedBox(height: 16),
+            InkWell(
+              onTap: () {},
+              child: Text(
+                "Esqueceu a senha?",
+                textAlign: TextAlign.right,
+                style: Tipografia.link,
+              ),
+            ),
+            SizedBox(height: 24),
+            // Botões
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 16),
+              ),
+              child: Text("Entrar", style: Tipografia.subtitulo),
+            ),
+            SizedBox(height: 24),
+            Text("Ou", textAlign: TextAlign.center),
+            SizedBox(height: 16),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.black87,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              onPressed: () {},
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 10,
+                children: [
+                  Image.asset("assets/imagens/google-icon.png", height: 18),
+                  Text("Continuar com Google", style: Tipografia.subtitulo),
+                ],
+              ),
+            ),
+            SizedBox(height: 16),
+
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.black87,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              onPressed: () {},
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 10,
+                children: [
+                  Image.asset("assets/imagens/facebook-icon.png", height: 18),
+                  Text("Continuar com Facebook", style: Tipografia.subtitulo),
+                ],
+              ),
+            ),
+            SizedBox(height: 54),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              spacing: 6,
+              children: [
+                Text("Não tem uma conta?", style: Tipografia.subtitulo),
+                InkWell(child: Text("Cadastre-se", style: Tipografia.link)),
               ],
             ),
-          ),
-          const SizedBox(height: 12), // Tópico 3
-          // Tópico 6: Botão Facebook com OutlinedButton e altura 48
-          OutlinedButton(
-            onPressed: () {},
-            style: OutlinedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 16),
-              side: const BorderSide(color: Colors.grey),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              spacing: 10,
-              children: [
-                Image.asset("assets/imagem/facebook-icon.png", height: 20),
-                Text(
-                  "Continuar com o Facebook",
-                  style: TextStyle(color: Colors.black87),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 54), // Tópico 3
-          // Rodapé Cadastre-se
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Não tem uma conta? "),
-              InkWell(
-                onTap: () {},
-                // TÓPICO 7 APLICADO AQUI: Correção ortográfica de "Cdastre-se" para "Cadastre-se"
-                child: Text("Cadastre-se", style: Tipografia.link),
-              ),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
