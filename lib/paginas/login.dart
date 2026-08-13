@@ -16,8 +16,24 @@ class _LoginState extends State<Login> {
   final emailControlador = TextEditingController();
   final senhaControlador = TextEditingController();
 
+  Icon getSenhaInvisivel() {
+    if (isObscure) {
+      return const Icon(Icons.visibility_off);
+    }
+
+    return const Icon(Icons.visibility);
+  }
+
+  bool isObscure = true;
+
+  void trocarObscure() {
+    setState(() {
+      isObscure = !isObscure;
+    });
+  }
+
   Future fazerLogin() async {
-    var url = Uri.http("10.112.4.33", "login");
+    var url = Uri.http("10.112.4.33", "api/login");
 
     var resposta = await http.post(
       url,
@@ -42,10 +58,17 @@ class _LoginState extends State<Login> {
       return;
     }
 
-    Navigator.push(
+    // Converte o JSON recebido pela API
+    var dados = jsonDecode(resposta.body);
+
+    // Pega o nome do usuário
+    var nomeUsuario = dados["nomeUsuario"] ?? "Usuário";
+
+    // Vai para o Dashboard passando o nome
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (_) => DashBoard(),
+        builder: (_) => Dashboard(nomeUsuario: nomeUsuario),
       ),
     );
   }
@@ -106,13 +129,16 @@ class _LoginState extends State<Login> {
 
               TextField(
                 controller: senhaControlador,
-                obscureText: true,
+                obscureText: isObscure,
                 decoration: InputDecoration(
                   hintText: "••••••••",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  suffixIcon: const Icon(Icons.visibility_off),
+                  suffixIcon: IconButton(
+                    onPressed: trocarObscure,
+                    icon: getSenhaInvisivel(),
+                  ),
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16,
                     vertical: 12,
